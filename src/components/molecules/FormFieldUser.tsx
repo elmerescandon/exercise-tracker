@@ -15,7 +15,7 @@ const FormFieldUser = ({form, name}: FormFieldUserProps) => {
             render={({field}) => (
                 <FormItem>
                     <InputSelect
-                        placeholder="Selecciona al usuario"
+                        placeholder="¿Quién eres?"
                         defaultValue={field.value}
                         onChange={field.onChange}
                         options={users}
