@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ButtonForm from "@/components/atoms/Buttons/ButtonForm/ButtonForm.tsx";
+import {Toaster} from "@/components/ui/toaster.tsx";
+import FormExercise from "@/components/organisms/FormExercise";
 ---
 
 <BaseLayout>
-    <ButtonForm title="Subir ejercicio" onClick={() => {}} />
+    <FormExercise client:load />
+    <Toaster client:load />
 </BaseLayout>
