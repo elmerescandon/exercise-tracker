@@ -1,6 +1,21 @@
-import { defineDb } from 'astro:db';
+import {column, defineDb} from "astro:db";
+import {defineTable} from "astro:db";
 
-// https://astro.build/db/config
+const ExerciseLog = defineTable({
+    columns: {
+        id: column.number({primaryKey: true}),
+        userName: column.text(),
+        week: column.number(),
+        armLeft: column.number(),
+        armRight: column.number(),
+        legLeft: column.number(),
+        legRight: column.number(),
+        chest: column.number(),
+        weight: column.number(),
+        bfi: column.number(),
+    },
+});
+
 export default defineDb({
-  tables: {}
+    tables: {ExerciseLog},
 });
