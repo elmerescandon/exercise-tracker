@@ -4,13 +4,14 @@ import {ArrowUpCircleIcon} from "lucide-react";
 type ButtonFormProps = {
     title: string;
     onClick: () => void;
+    type?: "submit" | "button";
 };
 
-const ButtonForm = ({title, onClick}: ButtonFormProps) => {
+const ButtonForm = ({title, onClick, type = "button"}: ButtonFormProps) => {
     return (
-        <Button onClick={onClick}>
+        <Button onClick={onClick} type={type}>
             <ArrowUpCircleIcon className="mr-2 h-4 w-4" />
-            Subir Ejercicio
+            {title}
         </Button>
     );
 };
