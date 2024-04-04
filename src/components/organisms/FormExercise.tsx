@@ -26,11 +26,12 @@ const FormSchema = z.object({
 });
 
 const FormExercise = () => {
+    // TODO: Show all the errors in a toast, not below the input
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
+    const onSubmit = (data: z.infer<typeof FormSchema>) => {
         toast({
             title: "You submitted the following values:",
             description: (
@@ -41,7 +42,7 @@ const FormExercise = () => {
                 </pre>
             ),
         });
-    }
+    };
 
     return (
         <Form {...form}>
