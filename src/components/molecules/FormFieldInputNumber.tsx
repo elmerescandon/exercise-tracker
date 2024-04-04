@@ -19,7 +19,7 @@ const FormFieldInput = ({
             control={form.control}
             name={name}
             render={({field}) => (
-                <FormItem>
+                <FormItem className="w-full">
                     <FormControl>
                         <Input
                             type={type}
