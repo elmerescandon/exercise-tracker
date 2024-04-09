@@ -31,17 +31,32 @@ const FormExercise = () => {
         resolver: zodResolver(FormSchema),
     });
 
-    const onSubmit = (data: z.infer<typeof FormSchema>) => {
-        toast({
-            title: "You submitted the following values:",
-            description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">
-                        {JSON.stringify(data, null, 2)}
-                    </code>
-                </pre>
-            ),
-        });
+    const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        try {
+            await fetch("/api/exercise", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            toast({
+                title: "You submitted the following values:",
+                description: (
+                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                        <code className="text-white">
+                            {JSON.stringify(data, null, 2)}
+                        </code>
+                    </pre>
+                ),
+            });
+        } catch (error) {
+            toast({
+                title: "Some error ocurred",
+                description: (error as Error).message,
+            });
+        }
     };
 
     return (
