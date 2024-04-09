@@ -5,7 +5,6 @@ const ExerciseLog = defineTable({
     columns: {
         id: column.number({primaryKey: true}),
         userName: column.text(),
-        week: column.number(),
         armLeft: column.number(),
         armRight: column.number(),
         legLeft: column.number(),
@@ -13,6 +12,9 @@ const ExerciseLog = defineTable({
         chest: column.number(),
         weight: column.number(),
         bfi: column.number(),
+    },
+    indexes: {
+        author_idx: {on: ["id"], unique: true},
     },
 });
 
