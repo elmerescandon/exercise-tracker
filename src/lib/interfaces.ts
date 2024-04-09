@@ -13,3 +13,9 @@ export interface IExerciseLog {
     weight: number;
     bfi: number;
 }
+
+export interface ITab {
+    value: string;
+    name: string;
+    content: React.ReactNode;
+}
