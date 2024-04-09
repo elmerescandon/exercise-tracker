@@ -2,9 +2,11 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import {Toaster} from "@/components/ui/toaster.tsx";
 import FormExercise from "@/components/organisms/FormExercise";
+import LogIndicator from "@/components/atoms/LogIndicator/LogIndicator.astro";
 ---
 
 <BaseLayout>
     <FormExercise client:load />
     <Toaster client:load />
+    <LogIndicator client:load />
 </BaseLayout>
