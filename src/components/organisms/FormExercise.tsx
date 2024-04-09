@@ -11,10 +11,14 @@ import FormFieldUser from "../molecules/FormFieldUser";
 import FormFieldInputNumber from "../molecules/FormFieldInputNumber";
 import ButtonForm from "../atoms/Buttons/ButtonForm/ButtonForm";
 import {formErrors, inputNumberZ} from "@/lib/constants";
+import FormFieldDatePicker from "../molecules/FormFieldDatePicker";
 
 const FormSchema = z.object({
     user: z.string({
         required_error: formErrors.user,
+    }),
+    date: z.date({
+        required_error: formErrors.date,
     }),
     armLeft: inputNumberZ,
     armRight: inputNumberZ,
@@ -67,6 +71,7 @@ const FormExercise = () => {
             >
                 <div className="flex flex-col gap-4">
                     <FormFieldUser form={form} name="user" />
+                    <FormFieldDatePicker form={form} />
                     <div className="flex gap-4">
                         <FormFieldInputNumber
                             form={form}
