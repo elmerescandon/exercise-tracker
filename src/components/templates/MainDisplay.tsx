@@ -15,8 +15,10 @@ const MainDisplay = ({add, leaderboard}: MainDisplayProps) => {
                     {leaderboard.name}
                 </TabsTrigger>
             </TabsList>
-            <TabsContent value="add">{add.content}</TabsContent>
-            <TabsContent value="leaderboard">{leaderboard.content}</TabsContent>
+            <TabsContent value={add.value}>{add.content}</TabsContent>
+            <TabsContent value={leaderboard.value}>
+                {leaderboard.content}
+            </TabsContent>
         </Tabs>
     );
 };
