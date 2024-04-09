@@ -1,5 +1,5 @@
 import type {ISelectOption} from "./interfaces";
-import {z} from "zod";
+import {date, z} from "zod";
 
 export const users: ISelectOption[] = [
     {label: "Raúl", value: "raul"},
@@ -11,6 +11,7 @@ export const users: ISelectOption[] = [
 export const formErrors = {
     user: " El usuario es requerido",
     metric: "La métrica es requerida",
+    date: "La fecha es requerida",
 };
 
 export const inputNumberZ = z.coerce
