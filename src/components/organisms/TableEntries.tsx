@@ -8,6 +8,7 @@ import {
     TableRow,
 } from "../ui/table";
 import type {IExerciseLog} from "@/lib/interfaces";
+import {userObjects} from "@/lib/constants";
 
 const TableEntries = () => {
     const [entries, setEntries] = useState<IExerciseLog[]>([]);
@@ -49,7 +50,13 @@ const TableEntries = () => {
                 {entries.map((entry, index) => (
                     <TableRow key={index}>
                         <TableHead>{index + 1}</TableHead>
-                        <TableHead>{entry.userName}</TableHead>
+                        <TableHead>
+                            {
+                                userObjects[
+                                    entry.userId as keyof typeof userObjects
+                                ]
+                            }
+                        </TableHead>
                         <TableHead>
                             {new Date(entry.date).toLocaleDateString()}
                         </TableHead>
