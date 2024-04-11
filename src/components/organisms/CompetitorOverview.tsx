@@ -8,6 +8,7 @@ import {
     AccordionTrigger,
 } from "../ui/accordion";
 import CompetitorName from "../molecules/CompetitorName";
+import {getWeek} from "date-fns";
 
 type CompetitorOverviewProps = {
     userId: string;
@@ -19,11 +20,14 @@ const CompetitorOverview = ({userId}: CompetitorOverviewProps) => {
     useEffect(() => {
         const getLeaderboard = async () => {
             try {
-                const response = await fetch(`api/exercise/${userId}`);
+                const response = await fetch(
+                    `api/exercise/${userId}?week=${getWeek(new Date())}`
+                );
                 if (!response.ok) {
                     throw new Error("Failed to fetch leaderboard");
                 }
                 const data = await response.json();
+                console.log(data);
                 setEntries(data);
             } catch (error) {
                 console.error(error);
