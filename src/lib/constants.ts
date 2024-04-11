@@ -9,7 +9,7 @@ export const users: ISelectOption[] = [
 ];
 
 export const formErrors = {
-    user: " El usuario es requerido",
+    userName: " El usuario es requerido",
     metric: "La métrica es requerida",
     date: "La fecha es requerida",
 };
