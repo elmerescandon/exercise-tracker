@@ -1,6 +1,7 @@
 import type {IExerciseLog} from "@/lib/interfaces";
 import type {APIContext, APIRoute} from "astro";
 import {db, ExerciseLog} from "astro:db";
+import {getWeek} from "date-fns";
 
 export async function POST(ctx: APIContext): Promise<Response> {
     try {
@@ -17,6 +18,7 @@ export async function POST(ctx: APIContext): Promise<Response> {
         const result = await db.insert(ExerciseLog).values({
             userId: newUserId,
             date: new Date(exerciseLog.date),
+            week: getWeek(new Date(exerciseLog.date)),
             armLeft: exerciseLog.armLeft,
             armRight: exerciseLog.armRight,
             legLeft: exerciseLog.legLeft,
