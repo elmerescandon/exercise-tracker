@@ -7,8 +7,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "../ui/accordion";
-import {userObjects} from "@/lib/constants";
-import Image from "astro/components/Image.astro";
+import CompetitorName from "../molecules/CompetitorName";
 
 type CompetitorOverviewProps = {
     userId: string;
@@ -37,24 +36,13 @@ const CompetitorOverview = ({userId}: CompetitorOverviewProps) => {
         <Accordion type="single" collapsible>
             <AccordionItem value={userId}>
                 <AccordionTrigger>
-                    <div className="flex gap-2 justify-center items-center">
-                        <img
-                            className="w-5 h-5 rounded-full"
-                            src="/mapu_square.jpg"
-                            alt="User"
-                        />
-                        {
-                            userObjects[
-                                Number(userId) as keyof typeof userObjects
-                            ]
-                        }
-                    </div>
+                    <CompetitorName userId={userId} />
                 </AccordionTrigger>
                 <AccordionContent>
                     {entries.length > 0 ? (
                         <MetricOverview exerciseLog={entries[0]} />
                     ) : (
-                        <p>No entries yet</p>
+                        <p>No ingreso datos todavía.</p>
                     )}
                 </AccordionContent>
             </AccordionItem>
