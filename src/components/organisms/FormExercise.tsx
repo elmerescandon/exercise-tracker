@@ -7,11 +7,11 @@ import {z} from "zod";
 import {Form} from "@/components/ui/form";
 
 import {toast} from "@/components/ui/use-toast";
-import FormFieldUser from "../molecules/FormFieldUser";
-import FormFieldInputNumber from "../molecules/FormFieldInputNumber";
+import FormFieldUser from "../molecules/Forms/FormFieldUser";
+import FormFieldInputNumber from "../molecules/Forms/FormFieldInputNumber";
 import ButtonForm from "../atoms/Buttons/ButtonForm/ButtonForm";
 import {formErrors, inputNumberZ} from "@/lib/constants";
-import FormFieldDatePicker from "../molecules/FormFieldDatePicker";
+import FormFieldDatePicker from "../molecules/Forms/FormFieldDatePicker";
 
 const FormSchema = z.object({
     userName: z.string({
