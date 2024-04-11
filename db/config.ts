@@ -5,6 +5,7 @@ const ExerciseLog = defineTable({
     columns: {
         id: column.number({primaryKey: true}),
         date: column.date(),
+        week: column.number(),
         userId: column.number(),
         armLeft: column.number(),
         armRight: column.number(),
