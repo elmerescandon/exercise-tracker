@@ -10,8 +10,6 @@ export async function POST(ctx: APIContext): Promise<Response> {
             throw new Error("No request body provided");
         }
 
-        console.log(exerciseLog);
-
         const newUserId =
             typeof exerciseLog.userId === "number"
                 ? exerciseLog.userId
