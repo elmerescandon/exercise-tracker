@@ -1,10 +1,10 @@
 export interface ISelectOption {
-    value: number;
+    value: string;
     label: string;
 }
 
 export interface IExerciseLog {
-    userName: string;
+    userId: string | number;
     date: Date;
     armLeft: number;
     armRight: number;
