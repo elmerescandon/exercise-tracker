@@ -8,7 +8,7 @@ type MainDisplayProps = {
 
 const MainDisplay = ({add, leaderboard}: MainDisplayProps) => {
     return (
-        <Tabs defaultValue={add.value} className="w-full h-3/5 mx-28">
+        <Tabs defaultValue={add.value} className="w-full h-4/5 mx-28">
             <TabsList>
                 <TabsTrigger value={add.value}>{add.name}</TabsTrigger>
                 <TabsTrigger value={leaderboard.value}>
