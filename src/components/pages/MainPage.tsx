@@ -1,14 +1,14 @@
 import MainDisplay from "../templates/MainDisplay";
 import FormExercise from "../organisms/FormExercise";
 import TableEntries from "../organisms/TableEntries";
-import CompetitorsOverview from "../organisms/CompetitorsOverview";
+import LeaderboardOverview from "../organisms/LeaderboardOverview";
 
 const MainPage = () => {
     const addTab = {value: "add", name: "Añadir 💪🏻", content: <FormExercise />};
     const leaderboardTab = {
         value: "leaderboard",
         name: "Tablero 🏆",
-        content: <CompetitorsOverview />,
+        content: <LeaderboardOverview />,
     };
     const entriesTab = {
         value: "entries",
