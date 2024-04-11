@@ -4,6 +4,7 @@ import {defineTable} from "astro:db";
 const ExerciseLog = defineTable({
     columns: {
         id: column.number({primaryKey: true}),
+        date: column.date(),
         userName: column.text(),
         armLeft: column.number(),
         armRight: column.number(),
