@@ -7,9 +7,14 @@ const MainPage = () => {
     const leaderboardTab = {
         value: "leaderboard",
         name: "Tablero 🏆",
+        content: <div>Hello</div>,
+    };
+    const entriesTab = {
+        value: "entries",
+        name: "Entradas 📋",
         content: <TableEntries />,
     };
-    return <MainDisplay tabs={[addTab, leaderboardTab]} />;
+    return <MainDisplay tabs={[addTab, leaderboardTab, entriesTab]} />;
 };
 
 export default MainPage;
