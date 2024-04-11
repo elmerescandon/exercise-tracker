@@ -10,9 +10,18 @@ export async function POST(ctx: APIContext): Promise<Response> {
             throw new Error("No request body provided");
         }
 
+        console.log(exerciseLog);
+
         const result = await db.insert(ExerciseLog).values({
-            userName: exerciseLog.user,
-            ...exerciseLog,
+            userName: exerciseLog.userName,
+            date: new Date(exerciseLog.date),
+            armLeft: exerciseLog.armLeft,
+            armRight: exerciseLog.armRight,
+            legLeft: exerciseLog.legLeft,
+            legRight: exerciseLog.legRight,
+            chest: exerciseLog.chest,
+            weight: exerciseLog.weight,
+            bfi: exerciseLog.bfi,
         });
         return new Response(
             JSON.stringify({
