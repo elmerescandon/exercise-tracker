@@ -1,21 +1,36 @@
-import {ExerciseLog, db, eq} from "astro:db";
+import {ExerciseLog, and, db, eq} from "astro:db";
 
-interface Params {
+export interface Params {
     id: string;
 }
 
-export async function GET({params}: {params: Params}) {
+export async function GET({
+    params,
+    request,
+}: {
+    params: Params;
+    request: Request;
+}) {
     try {
         const {id} = params;
+        const week = new URL(request.url).searchParams.get("week");
+        console.log(week);
 
         if (!id) {
             throw new Error("No user ID provided");
         }
 
-        const userLogs = await db
+        const mainCondition = eq(ExerciseLog.userId, parseInt(id.toString()));
+        const weekCondition = week
+            ? eq(ExerciseLog.week, parseInt(week))
+            : undefined;
+
+        let userLogsQuery = db
             .select()
             .from(ExerciseLog)
-            .where(eq(ExerciseLog.userId, parseInt(id)));
+            .where(and(mainCondition, weekCondition));
+
+        const userLogs = await userLogsQuery;
 
         return new Response(JSON.stringify(userLogs), {status: 200});
     } catch (error) {
