@@ -1,5 +1,5 @@
-import {FormField, FormItem, FormMessage} from "../ui/form";
-import InputSelect from "../atoms/Inputs/InputSelect/InputSelect";
+import {FormField, FormItem, FormMessage} from "../../ui/form";
+import InputSelect from "../../atoms/Inputs/InputSelect/InputSelect";
 import {users} from "@/lib/constants";
 
 type FormFieldUserProps = {
