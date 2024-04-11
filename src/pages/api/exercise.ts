@@ -13,7 +13,7 @@ export async function POST(ctx: APIContext): Promise<Response> {
         console.log(exerciseLog);
 
         const result = await db.insert(ExerciseLog).values({
-            userName: exerciseLog.userName,
+            userId: parseInt(exerciseLog.userId),
             date: new Date(exerciseLog.date),
             armLeft: exerciseLog.armLeft,
             armRight: exerciseLog.armRight,
