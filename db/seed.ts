@@ -6,8 +6,8 @@ export default async function seed() {
     await db.insert(ExerciseLog).values([
         {
             id: 1,
-            date: new Date(),
-            week: getWeek(new Date()),
+            date: new Date(`2024-04-01T00:00:00Z`),
+            week: getWeek(new Date(`2024-04-01T00:00:00Z`)),
             userId: 4,
             armLeft: 27,
             armRight: 26,
@@ -19,8 +19,8 @@ export default async function seed() {
         },
         {
             id: 2,
-            date: new Date(),
-            week: getWeek(new Date()),
+            date: new Date(`2024-04-01T00:00:00Z`),
+            week: getWeek(new Date(`2024-04-01T00:00:00Z`)),
             userId: 1,
             armLeft: 29,
             armRight: 29,
@@ -32,8 +32,8 @@ export default async function seed() {
         },
         {
             id: 3,
-            date: new Date(),
-            week: getWeek(new Date()),
+            date: new Date(`2024-04-10T00:00:00Z`),
+            week: getWeek(new Date(`2024-04-10T00:00:00Z`)),
             userId: 4,
             armLeft: 27.1,
             armRight: 26.5,
@@ -45,8 +45,8 @@ export default async function seed() {
         },
         {
             id: 4,
-            date: new Date(),
-            week: getWeek(new Date()),
+            date: new Date(`2024-04-10T00:00:00Z`),
+            week: getWeek(new Date(`2024-04-10T00:00:00Z`)),
             userId: 1,
             armLeft: 29.3,
             armRight: 28.2,
