@@ -13,6 +13,7 @@ export interface IExerciseLog {
     chest: number;
     weight: number;
     bfi: number;
+    week?: number;
 }
 
 export interface ITab {
