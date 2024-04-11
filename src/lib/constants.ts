@@ -2,10 +2,10 @@ import type {ISelectOption} from "./interfaces";
 import {date, z} from "zod";
 
 export const users: ISelectOption[] = [
-    {label: "Raúl", value: "raul"},
-    {label: "Guti", value: "guti"},
-    {label: "Mapu", value: "mapu"},
-    {label: "Math", value: "mathi"},
+    {label: "Raúl", value: 1},
+    {label: "Guti", value: 2},
+    {label: "Mapu", value: 3},
+    {label: "Math", value: 4},
 ];
 
 export const formErrors = {
