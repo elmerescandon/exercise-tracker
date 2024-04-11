@@ -1,18 +1,15 @@
 import MainDisplay from "../templates/MainDisplay";
 import FormExercise from "../organisms/FormExercise";
-import TableLearboard from "../organisms/TableLearboard";
+import TableEntries from "../organisms/TableEntries";
 
 const MainPage = () => {
-    return (
-        <MainDisplay
-            add={{value: "add", name: "Añadir 💪🏻", content: <FormExercise />}}
-            leaderboard={{
-                value: "leaderboard",
-                name: "Tablero 🏆",
-                content: <TableLearboard />,
-            }}
-        />
-    );
+    const addTab = {value: "add", name: "Añadir 💪🏻", content: <FormExercise />};
+    const leaderboardTab = {
+        value: "leaderboard",
+        name: "Tablero 🏆",
+        content: <TableEntries />,
+    };
+    return <MainDisplay tabs={[addTab, leaderboardTab]} />;
 };
 
 export default MainPage;
