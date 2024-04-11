@@ -2,23 +2,26 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "../ui/tabs";
 import type {ITab} from "@/lib/interfaces";
 
 type MainDisplayProps = {
-    add: ITab;
-    leaderboard: ITab;
+    tabs: ITab[];
 };
 
-const MainDisplay = ({add, leaderboard}: MainDisplayProps) => {
+const MainDisplay = ({tabs}: MainDisplayProps) => {
+    const defaultValue = tabs[0]?.value;
+
     return (
-        <Tabs defaultValue={add.value} className="w-full h-4/5 mx-28">
+        <Tabs defaultValue={defaultValue} className="w-full h-4/5 mx-28">
             <TabsList>
-                <TabsTrigger value={add.value}>{add.name}</TabsTrigger>
-                <TabsTrigger value={leaderboard.value}>
-                    {leaderboard.name}
-                </TabsTrigger>
+                {tabs.map((tab) => (
+                    <TabsTrigger key={tab.value} value={tab.value}>
+                        {tab.name}
+                    </TabsTrigger>
+                ))}
             </TabsList>
-            <TabsContent value={add.value}>{add.content}</TabsContent>
-            <TabsContent value={leaderboard.value}>
-                {leaderboard.content}
-            </TabsContent>
+            {tabs.map((tab) => (
+                <TabsContent key={tab.value} value={tab.value}>
+                    {tab.content}
+                </TabsContent>
+            ))}
         </Tabs>
     );
 };
