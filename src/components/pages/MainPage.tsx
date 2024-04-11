@@ -1,5 +1,6 @@
 import MainDisplay from "../templates/MainDisplay";
 import FormExercise from "../organisms/FormExercise";
+import TableLearboard from "../organisms/TableLearboard";
 
 const MainPage = () => {
     return (
@@ -8,7 +9,7 @@ const MainPage = () => {
             leaderboard={{
                 value: "leaderboard",
                 name: "Tablero 🏆",
-                content: "Leaderboard content",
+                content: <TableLearboard />,
             }}
         />
     );
