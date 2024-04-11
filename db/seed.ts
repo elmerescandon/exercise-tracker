@@ -6,7 +6,7 @@ export default async function seed() {
         {
             id: 1,
             date: new Date(),
-            userName: "mathi",
+            userId: 4,
             armLeft: 27,
             armRight: 26,
             legLeft: 46.5,
@@ -18,7 +18,7 @@ export default async function seed() {
         {
             id: 2,
             date: new Date(),
-            userName: "raul",
+            userId: 1,
             armLeft: 29,
             armRight: 29,
             legLeft: 47,
@@ -30,7 +30,7 @@ export default async function seed() {
         {
             id: 3,
             date: new Date(),
-            userName: "mathi",
+            userId: 4,
             armLeft: 27.1,
             armRight: 26.5,
             legLeft: 46.8,
@@ -42,7 +42,7 @@ export default async function seed() {
         {
             id: 4,
             date: new Date(),
-            userName: "raul",
+            userId: 1,
             armLeft: 29.3,
             armRight: 28.2,
             legLeft: 45.5,
