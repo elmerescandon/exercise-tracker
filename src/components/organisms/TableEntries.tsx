@@ -37,6 +37,7 @@ const TableEntries = () => {
                     <TableHead>Position</TableHead>
                     <TableHead>User</TableHead>
                     <TableHead>Date</TableHead>
+                    <TableHead>Week</TableHead>
                     <TableHead>Arm left</TableHead>
                     <TableHead>Arm right</TableHead>
                     <TableHead>Leg left</TableHead>
@@ -60,6 +61,7 @@ const TableEntries = () => {
                         <TableHead>
                             {new Date(entry.date).toLocaleDateString()}
                         </TableHead>
+                        <TableHead>{entry.week}</TableHead>
                         <TableHead>{entry.armLeft}</TableHead>
                         <TableHead>{entry.armRight}</TableHead>
                         <TableHead>{entry.legLeft}</TableHead>
