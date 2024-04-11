@@ -4,7 +4,8 @@ export interface ISelectOption {
 }
 
 export interface IExerciseLog {
-    user: string;
+    userName: string;
+    date: Date;
     armLeft: number;
     armRight: number;
     legLeft: number;
