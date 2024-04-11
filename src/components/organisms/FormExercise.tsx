@@ -14,8 +14,8 @@ import {formErrors, inputNumberZ} from "@/lib/constants";
 import FormFieldDatePicker from "../molecules/Forms/FormFieldDatePicker";
 
 const FormSchema = z.object({
-    userName: z.string({
-        required_error: formErrors.userName,
+    userId: z.string({
+        required_error: formErrors.userId,
     }),
     date: z.date({
         required_error: formErrors.date,
@@ -70,7 +70,7 @@ const FormExercise = () => {
                 className="flex flex-col gap-8 px-4 pt-14"
             >
                 <div className="flex flex-col gap-4">
-                    <FormFieldUser form={form} name="userName" />
+                    <FormFieldUser form={form} name="userId" />
                     <FormFieldDatePicker form={form} />
                     <div className="flex gap-4">
                         <FormFieldInputNumber
