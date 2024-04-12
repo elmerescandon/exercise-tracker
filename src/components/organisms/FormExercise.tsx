@@ -32,6 +32,7 @@ const FormExercise = () => {
                     data.userId
                 )
             ) {
+                await ExerciseService.updateExercise(data);
                 toast(toastExistingExercise);
             } else {
                 await ExerciseService.uploadExercise(data);
