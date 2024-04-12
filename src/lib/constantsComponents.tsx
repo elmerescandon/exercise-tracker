@@ -16,5 +16,5 @@ export const toastAddExercise = (data: z.infer<typeof FormSchema>) => {
 
 export const toastExistingExercise = {
     title: "Ya existe un ejercicio para esta semana",
-    description: "No se ha podido subir el ejercicio",
+    description: "Se están actualizando sus valores.",
 };
