@@ -10,51 +10,33 @@ import {toast} from "@/components/ui/use-toast";
 import FormFieldUser from "../molecules/Forms/FormFieldUser";
 import FormFieldInputNumber from "../molecules/Forms/FormFieldInputNumber";
 import ButtonForm from "../atoms/Buttons/ButtonForm/ButtonForm";
-import {formErrors, inputNumberZ} from "@/lib/constants";
+import {FormSchema} from "@/lib/constants";
 import FormFieldDatePicker from "../molecules/Forms/FormFieldDatePicker";
-
-const FormSchema = z.object({
-    userId: z.string({
-        required_error: formErrors.userId,
-    }),
-    date: z.date({
-        required_error: formErrors.date,
-    }),
-    armLeft: inputNumberZ,
-    armRight: inputNumberZ,
-    legLeft: inputNumberZ,
-    legRight: inputNumberZ,
-    chest: inputNumberZ,
-    weight: inputNumberZ,
-    bfi: inputNumberZ,
-});
+import ExerciseService from "@/lib/Services/Exercise.service";
+import {getWeek} from "date-fns";
+import {
+    toastAddExercise,
+    toastExistingExercise,
+} from "@/lib/constantsComponents";
 
 const FormExercise = () => {
-    // TODO: Show all the errors in a toast, not below the input
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         try {
-            await fetch("/api/exercise", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-
-            toast({
-                title: "You submitted the following values:",
-                description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        <code className="text-white">
-                            {JSON.stringify(data, null, 2)}
-                        </code>
-                    </pre>
-                ),
-            });
+            if (
+                await ExerciseService.existWeeklyExercise(
+                    getWeek(new Date(data.date)),
+                    data.userId
+                )
+            ) {
+                toast(toastExistingExercise);
+            } else {
+                await ExerciseService.uploadExercise(data);
+                toast(toastAddExercise(data));
+            }
         } catch (error) {
             toast({
                 title: "Some error ocurred",
