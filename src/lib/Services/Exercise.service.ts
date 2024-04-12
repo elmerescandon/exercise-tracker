@@ -50,6 +50,22 @@ class ExerciseService {
             throw error;
         }
     }
+
+    public async updateExercise(
+        data: z.infer<typeof FormSchema>
+    ): Promise<void> {
+        try {
+            await fetch("/api/exercise", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default ExerciseService.getInstance();
