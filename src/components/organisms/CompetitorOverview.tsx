@@ -27,7 +27,6 @@ const CompetitorOverview = ({userId}: CompetitorOverviewProps) => {
                     throw new Error("Failed to fetch leaderboard");
                 }
                 const data = await response.json();
-                console.log(data);
                 setEntries(data);
             } catch (error) {
                 console.error(error);

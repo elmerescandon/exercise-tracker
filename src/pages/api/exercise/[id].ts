@@ -14,7 +14,6 @@ export async function GET({
     try {
         const {id} = params;
         const week = new URL(request.url).searchParams.get("week");
-        console.log(week);
 
         if (!id) {
             throw new Error("No user ID provided");
