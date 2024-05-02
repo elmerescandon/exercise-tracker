@@ -1,6 +1,6 @@
 import type {IExerciseLog} from "@/lib/interfaces";
 import type {APIContext, APIRoute} from "astro";
-import {db, eq, ExerciseLog} from "astro:db";
+import {and, db, eq, ExerciseLog} from "astro:db";
 import {getWeek} from "date-fns";
 
 export async function POST(ctx: APIContext): Promise<Response> {
@@ -47,29 +47,31 @@ export async function POST(ctx: APIContext): Promise<Response> {
 export async function PUT(ctx: APIContext): Promise<Response> {
     try {
         const rawData = await new Response(ctx.request.body).text();
-        const exerciseLog: IExerciseLog = JSON.parse(rawData);
-        if (!exerciseLog) {
+        const {data, id} = JSON.parse(rawData);
+        if (!data) {
             throw new Error("No request body provided");
         }
 
         const newUserId =
-            typeof exerciseLog.userId === "number"
-                ? exerciseLog.userId
-                : parseInt(exerciseLog.userId);
+            typeof data.userId === "number"
+                ? data.userId
+                : parseInt(data.userId);
         const result = await db
             .update(ExerciseLog)
             .set({
-                date: new Date(exerciseLog.date),
-                week: getWeek(new Date(exerciseLog.date)),
-                armLeft: exerciseLog.armLeft,
-                armRight: exerciseLog.armRight,
-                legLeft: exerciseLog.legLeft,
-                legRight: exerciseLog.legRight,
-                chest: exerciseLog.chest,
-                weight: exerciseLog.weight,
-                bfi: exerciseLog.bfi,
+                date: new Date(data.date),
+                week: getWeek(new Date(data.date)),
+                armLeft: data.armLeft,
+                armRight: data.armRight,
+                legLeft: data.legLeft,
+                legRight: data.legRight,
+                chest: data.chest,
+                weight: data.weight,
+                bfi: data.bfi,
             })
-            .where(eq(ExerciseLog.userId, newUserId));
+            .where(
+                and(eq(ExerciseLog.userId, newUserId), eq(ExerciseLog.id, id))
+            );
         return new Response(
             JSON.stringify({
                 message: "Exercise log updated successfully",
