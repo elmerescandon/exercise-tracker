@@ -20,9 +20,17 @@ export async function GET(request: Request): Promise<Response> {
             );
 
         if (exerciseLogs.length > 0) {
-            return new Response(JSON.stringify({exists: true}), {status: 200});
+            return new Response(
+                JSON.stringify({
+                    id: exerciseLogs[0].id,
+                    exists: true,
+                }),
+                {status: 200}
+            );
         } else {
-            return new Response(JSON.stringify({exists: false}), {status: 200});
+            return new Response(JSON.stringify({exists: false, id: null}), {
+                status: 200,
+            });
         }
     } catch (error) {
         return new Response(
