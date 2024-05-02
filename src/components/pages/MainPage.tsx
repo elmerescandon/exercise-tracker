@@ -2,9 +2,10 @@ import MainDisplay from "../templates/MainDisplay";
 import FormExercise from "../organisms/FormExercise";
 import TableEntries from "../organisms/TableEntries";
 import LeaderboardOverview from "../organisms/LeaderboardOverview";
+import AddExercise from "../templates/AddExercise";
 
 const MainPage = () => {
-    const addTab = {value: "add", name: "Añadir 💪🏻", content: <FormExercise />};
+    const addTab = {value: "add", name: "Añadir 💪🏻", content: <AddExercise />};
     const leaderboardTab = {
         value: "leaderboard",
         name: "Tablero 🏆",
