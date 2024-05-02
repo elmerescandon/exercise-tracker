@@ -1,5 +1,6 @@
 import type {z} from "astro:content";
 import type {FormSchema} from "../constants";
+import type {IExerciseExist} from "./Exercise.interface";
 
 class ExerciseService {
     private static instance: ExerciseService;
@@ -18,7 +19,7 @@ class ExerciseService {
     public async existWeeklyExercise(
         week: number,
         userId: string | number
-    ): Promise<boolean> {
+    ): Promise<IExerciseExist> {
         try {
             const response = await fetch(
                 `/api/exercise/valid?week=${week}&id=${userId}`,
@@ -29,7 +30,7 @@ class ExerciseService {
                     },
                 }
             );
-            return (await response.json()).exists;
+            return await response.json();
         } catch (error) {
             throw error;
         }
@@ -52,7 +53,8 @@ class ExerciseService {
     }
 
     public async updateExercise(
-        data: z.infer<typeof FormSchema>
+        data: z.infer<typeof FormSchema>,
+        id: number
     ): Promise<void> {
         try {
             await fetch("/api/exercise", {
@@ -60,7 +62,7 @@ class ExerciseService {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({data, id}),
             });
         } catch (error) {
             throw error;
