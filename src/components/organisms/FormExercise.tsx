@@ -18,22 +18,34 @@ import {
     toastAddExercise,
     toastExistingExercise,
 } from "@/lib/constantsComponents";
+import {useState} from "react";
+import AlertWrapper from "../templates/AlertWrapper";
 
 const FormExercise = () => {
+    const [open, setOpen] = useState(false);
+    const [id, setId] = useState<number | null>(null);
+
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
 
+    const handleAction = async () => {
+        if (!id) return;
+        await ExerciseService.updateExercise(form.getValues(), id);
+        toast(toastExistingExercise);
+    };
+
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         try {
-            if (
-                await ExerciseService.existWeeklyExercise(
-                    getWeek(new Date(data.date)),
-                    data.userId
-                )
-            ) {
-                await ExerciseService.updateExercise(data);
-                toast(toastExistingExercise);
+            const exerciseExist = await ExerciseService.existWeeklyExercise(
+                getWeek(new Date(data.date)),
+                data.userId
+            );
+            console.log(exerciseExist);
+            if (exerciseExist.exists) {
+                setOpen(true);
+                console.log(exerciseExist.id);
+                setId(exerciseExist.id);
             } else {
                 await ExerciseService.uploadExercise(data);
                 toast(toastAddExercise(data));
@@ -110,6 +122,14 @@ const FormExercise = () => {
                     title="Subir ejercicio"
                 />
             </form>
+            <AlertWrapper
+                title="Este ejercicio ya existe"
+                description="¿Estás seguro de que quieres añadir este ejercicio? Una vez añadido, no podrás modificarlo."
+                open={open}
+                setOpen={setOpen}
+                handleAction={handleAction}
+                handleCancel={() => setOpen(false)}
+            />
         </Form>
     );
 };
